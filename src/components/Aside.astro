@@ -1,0 +1,50 @@
+---
+interface Details {
+	title: string;
+	involvement: string;
+	tools: string;
+	status: string;
+	developer: string;
+	
+};
+
+const { emoji, title, involvement, tools, status, developer } = Astro.props;
+---
+
+<div class="aside-container">
+  <div class="aside-header">
+    <span class="emoji" role="img" aria-label="icon">{emoji}</span>
+    <span>{title}</span>
+  </div>
+  <div class="aside-content">
+    <p>Involvement: {involvement}</p>
+    <p>Tools: {tools}</p>
+    <p>Status: {status}</p>
+    <p>Developer: {developer}</p>
+  </div>
+</div>
+
+<style>
+  .aside-container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .aside-header {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+  .aside-header .emoji {
+    margin-right: 10px;
+    font-size: 24px; /* Set the size of the emoji */
+  }
+  .aside-content p {
+    margin: 4px 0;
+  }
+  .aside-content p:before {
+    content: "▸ ";
+    color: #fff;
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+interface Path {
+	path: string;
+};
+
+const { path } = Astro.props;
+---
+
+<div class="video-wrapper">
+	<video controls>
+			<source src={path} type="video/mp4">
+			Your browser does not support the video tag.
+	</video>
+</div>
+
+<style>
+	.video-wrapper {
+		position: relative;
+		width: 100%;
+		/* 16:9 Aspect Ratio */
+		padding-top: 56.25%; /* (9 / 16) * 100% */
+		overflow: hidden;
+	}
+
+	.video-wrapper video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+

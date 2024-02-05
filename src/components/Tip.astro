@@ -1,0 +1,7 @@
+---
+// Initialize props with default values directly
+// This approach avoids the need for explicit type annotations
+// and focuses on standard JavaScript object destructuring with default values.
+const props = Astro.props;
+const title = props.title || "Tip"; // Provide a default value for the title
+---

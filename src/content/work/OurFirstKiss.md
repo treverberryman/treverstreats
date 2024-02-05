@@ -1,7 +1,7 @@
 ---
 title: Our First Kiss
 publishDate: 2019-10-02 00:00:00
-img: /assets/blog-media/OurFirstKiss/OurFirstKiss-Logo.png
+img: /assets/work-media/OurFirstKiss/OurFirstKiss-Logo.png
 img_alt: Our First Kiss Project Logo.
 description: |
   Our First Kiss is a queer, alternative controller (alt ctrl) game about timing your first kiss on a date at the movies while under the scrutiny of the rest of the audience.

@@ -207,6 +207,35 @@ h5 {
   justify-content: center;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center; /* Adjust this as needed */
+  justify-content: center; /* Adjust this as needed */
+  gap: 10px; /* Space between images */
+}
+
+.flex-container img {
+  flex: 1; /* Allows images to grow and shrink as needed */
+  max-width: 50%; /* Ensures image max-width does not exceed its container */
+  height: auto; /* Maintains aspect ratio */
+}
+
+.flex-container .lightbox-image {
+  /* Your styles for images */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.flex-container .lightbox-image:hover {
+  /* Style for hover state */
+  transform: scale(1.05);
+}
+
+
+/* .post-images {
+	max-width: 45%;
+} */
 
 .gap-2 {
 	gap: 0.5rem;

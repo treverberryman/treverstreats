@@ -8,12 +8,26 @@ description: |
 tags:
   - Unity3D
 ---
+import Aside from '/src/components/Aside.astro';
+import ImageModal from '/src/components/ImageModal.astro';
+
+<Aside 
+  emoji="🚀 "
+  title="Role: Unity Developer"
+  involvement="2.5 months"
+  tools="Unity3D, Re:Wired"
+  status="Released"
+  developer="Student Team"
+/>
 
 I assisted with prototyping the initial theater movement mechanic that allowed players to see their avatars move closer for their kiss.
 
 Their Arduino plugin (that made it alt controller) was new to me so that was fun to tinker with.
 
-I used C# and another controller input plugin called Re:wired to test out logic on gamepads. Working on this project gave me more confidence in my prototyping abilities and as a collaborator.
+<div className="flex-container">
+  <img class="lightbox-image" src="../assets/work-media/OurFirstKiss/OurFirstKiss-ChooseYourAccessory.png" alt="First Image Description" />
+  <p>I used C# and another controller input plugin called Re:wired to test out logic on gamepads. Working on this project gave me more confidence in my prototyping abilities and as a collaborator.</p>
+</div>
 
 <div class="iframe-container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/C0DstMu-0qQ?si=0Q1xA8Zv3OW_ZQCF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -23,8 +37,10 @@ I was complimented on my professionalism with consistent updates and effective f
 
 The whole experience was smooth and successful. They got to present their project at the 20th anniversary of the [GDC Experimental Gameplay Workshop](https://schedule.gdconf.com/session/experimental-gameplay-workshop-20th-anniversary/885916) as well!
 
-![Our First Kiss Game Credits](/assets/blog-media/OurFirstKiss/OurFirstKiss-Credits.png)
+<div className="flex-container">
+  <img class="lightbox-image" src="../assets/work-media/OurFirstKiss/OurFirstKiss-AltControllers.png" alt="First Image Description" />
+</div>
 
-![OurFirstKiss-AltControllers](/assets/blog-media/OurFirstKiss/OurFirstKiss-AltControllers.png)
-
-![OurFirstKiss-ChooseYourAccessory](/assets/blog-media/OurFirstKiss/OurFirstKiss-ChooseYourAccessory.png)
+<div className="flex-container">
+  <img class="lightbox-image" src="../assets/work-media/OurFirstKiss/OurFirstKiss-Credits.png" alt="First Image Description" />
+</div>

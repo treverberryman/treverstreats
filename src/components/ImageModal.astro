@@ -1,0 +1,52 @@
+---
+// This is the frontmatter section where we can define our component's logic
+// No need to define a global function; the script will be encapsulated within the component
+---
+
+<div class="lightbox-container">
+  <!-- You can insert any HTML here that you want to use for your lightbox -->
+</div>
+
+<script>
+  // This script tag will be client-side only
+  document.addEventListener('DOMContentLoaded', () => {
+  const images = document.querySelectorAll('.lightbox-image');
+
+  images.forEach(element => {
+    // Cast the element to HTMLImageElement to access the 'src' property
+    const image = element as HTMLImageElement;
+    image.style.cursor = 'pointer';
+    image.addEventListener('click', function() {
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+      `;
+
+      const largeImage = document.createElement('img');
+      largeImage.src = image.src; // TypeScript now knows 'image' is an HTMLImageElement
+      largeImage.style.cssText = `
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+      `;
+
+      overlay.appendChild(largeImage);
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener('click', () => {
+        document.body.removeChild(overlay);
+      });
+    });
+  });
+});
+
+</script>

@@ -10,6 +10,7 @@ tags:
 ---
 import Aside from '/src/components/Aside.astro';
 import Video from '/src/components/Video.astro';
+import ImageModal from '/src/components/ImageModal.astro';
 
 <Aside 
   emoji="🚀 "
@@ -27,3 +28,28 @@ IXS Odyssey is a VR Sci-Fi Survival Horror set on a deep space colony mission to
 <Video
   path="../public/assets/work-media/IXS-Odyssey/Odyssey Gameplay Trailer.mp4"
 />
+
+<div className="flex-container">
+  <img class="lightbox-image" src="../assets/work-media/IXS-Odyssey/IXS-Odyssey-Ship-Layout.png" alt="First Image Description" />
+  <img class="lightbox-image" src="../assets/work-media/IXS-Odyssey/IXS-Odyssey-HUD-Concept.png" alt="Second Image Description" />
+</div>
+
+There was an issue where the player would lose engagement if their headlamp had an unlimited battery. I solved this by having the headlamp drain battery over time and placing hand-recharging pads in the level. This allowed for better engagement. I worked with programmers to tune the battery drain based on player activity, had artists design the hand pads to entice the player using signposting, and worked with writers to tune the pacing. We iterated on this feature using external and internal UX feedback gathering and playtest data.
+
+<div className="flex-container">
+  <img class="lightbox-image" src="../assets/work-media/IXS-Odyssey/IXS-Odyssey-Level-Design.jpeg" alt="First Image Description" />
+  
+  <p>I also contributed to the level design while paying extra attention to how much players would be frightened and dialing up to 11 where possible. We had players peaking around corners not knowing what to expect next.</p>
+</div>
+
+<div className="flex-container">
+  <img class="lightbox-image" src="../assets/work-media/IXS-Odyssey/VRTK-button.gif" alt="First Image Description" />
+  
+  <p>The VRTK plug-in for Unity 3D or “Virtual Reality Toolkit” was a huge help with scaffolding our movement and interaction. Our team grappled for some time with how the player should navigate their environment (since motion sickness was a huge concern). I chose to use a button press that dragged the player forward in whichever direction their controller faced. This maximized the horror impact and minimized motion sickness.</p>
+</div>
+
+<div className="flex-container">
+  <img class="lightbox-image" src="../assets/work-media/IXS-Odyssey/LSU-VR-Studio.jpeg" alt="First Image Description" />
+  
+  <p>Here’s me designing in VR at the studio on my university campus @ LSU. I still appreciate how much our team was able to accomplish in only 6 months. We even held a full audition for voice actors! </p>
+</div>

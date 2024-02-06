@@ -1,22 +1,26 @@
-<h1 align="center">Hi, I'm <a href="https://github.com/treverberryman">Trever</a> 👋🏾</h1>
+<h1 align="center">Hi, I'm <a href="https://github.com/treverberryman">Trever</a> 👋</h1>
+<p align="center">Hi, I’m Trever (he/they) 👋 I'm a creative developer, IT and QA professional based in New York.</p>
+<p align="center">In my free time, I enjoy learning languages, like 中国人 and Español. Some of the other things I love doing are hiking, meditating, photography and making Spotify playlists!</p>
+
 
 ### 🛠 Skills &nbsp;
 
 - **Languages:** &nbsp;
-  ![C#](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
-  ![Javascript](https://img.shields.io/badge/-C++-00599C?style=flat&logo=c%2B%2B&logoColor=white)
-  ![HTML](https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=mysql&logoColor=white)
-  ![CSS](https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=mysql&logoColor=white)
+  ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
+  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 - **Frameworks & Libraries:** &nbsp;
-  ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
-
+  ![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white)
+  ![WebGL](https://img.shields.io/badge/WebGL-990000?logo=webgl&logoColor=white&style=for-the-badge)
+  ![WordPress](https://img.shields.io/badge/WordPress-%23117AC9.svg?style=for-the-badge&logo=WordPress&logoColor=white)
+  
 - **Management & Deployment:** &nbsp;
   ![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
 
 - **Software:**
-  [![Unity](https://img.shields.io/badge/Made%20with-Unity-57b9d3.svg?style=flat&logo=unity)](https://unity3d.com)
-  ![Twine](https://img.shields.io/badge/-Jupyter%20Notebook-F37626?style=flat&logo=jupyter&logoColor=white)
+  ![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)
   ![Visual Studio Code](https://img.shields.io/badge/-Visual%20Studio%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
 
 ### 📈 GitHub Analytics &nbsp;

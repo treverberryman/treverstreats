@@ -1,13 +1,16 @@
 ---
 interface Path {
 	path: string;
+	autoplay: string;
+	loop: string;
+	muted: string;
 };
 
-const { path } = Astro.props;
+const { path, autoplay, loop, muted } = Astro.props;
 ---
 
 <div class="video-wrapper">
-	<video controls>
+	<video {autoplay} {loop} {muted} controls>
 			<source src={path} type="video/mp4">
 			Your browser does not support the video tag.
 	</video>

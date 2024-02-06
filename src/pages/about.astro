@@ -111,3 +111,20 @@ import Hero from '../components/Hero.astro';
 		}
 	}
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-items a');
+    navLinks.forEach(link => {
+      if(link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
+      }
+    });
+  });
+</script>
+

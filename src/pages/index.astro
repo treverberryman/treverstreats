@@ -12,6 +12,7 @@ import Icon from '../components/Icon.astro';
 import Pill from '../components/Pill.astro';
 import BlogPreview from '../components/BlogPreview.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
+import TreverGIF from './assets/portfolio-rectangle-480x620.gif';
 
 // Page section components
 import ContactCTA from '../components/ContactCTA.astro';
@@ -50,7 +51,7 @@ const projects = (await getCollection('work'))
 					alt="Trever Berryman in dress shirt with a animated outerspace background"
 					width="480"
 					height="620"
-					src="/assets/portfolio-rectangle-480x620.gif"
+					src=`${TreverGIF}`
 				/>
 			</header>
 

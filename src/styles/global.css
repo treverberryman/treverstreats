@@ -209,9 +209,10 @@ h5 {
 
 .flex-container {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center; /* Adjust this as needed */
   justify-content: center; /* Adjust this as needed */
+	/* width: 70%; */
   gap: 10px; /* Space between images */
 }
 
@@ -231,11 +232,6 @@ h5 {
   /* Style for hover state */
   transform: scale(1.05);
 }
-
-
-/* .post-images {
-	max-width: 45%;
-} */
 
 .gap-2 {
 	gap: 0.5rem;

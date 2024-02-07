@@ -10,6 +10,7 @@ tags:
 ---
 import Aside from '/src/components/Aside.astro';
 import ImageModal from '/src/components/ImageModal.astro';
+import Video from '/src/components/Video.astro';
 
 <Aside 
   emoji="🚀 "
@@ -17,18 +18,23 @@ import ImageModal from '/src/components/ImageModal.astro';
   involvement="Sep 2016 - May 2017"
   tools="Unity3D"
   status="Released - Oct 4, 2017"
-  developer="Pixel Dash Studios, EQ Games, Tripwire Interactive"
+  developer="Pixel Dash Studios, EQ Games"
 />
 
-At Pixel Dash I contributed to design, C# scripting, and prototyping.
+<div className="flex-container">
+  <p>At Pixel Dash I contributed to design, C# scripting, and prototyping.</p>
+</div>
+
 
 [Road Redemption↗](https://store.steampowered.com/app/300380/Road_Redemption/) lets you lead a biker gang on an epic journey across the country in a driving combat road rage adventure. Earn money, loot and weapons by completing races, assassinations, robberies, and other challenges in your path. 
 
 <div class="iframe-container">
-    <iframe width="560" height="360" src="https://www.youtube.com/embed/q46mL0PtCVo?si=b3AaT5tO-vu0DON7&amp;start=228" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="100%" height="360" src="https://www.youtube.com/embed/q46mL0PtCVo?si=b3AaT5tO-vu0DON7&amp;start=228" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-    
-One large contribution I assisted with was designing the lead biker villain, “The Assassin”. I helped iterate on his gameplay, example dialogue, and the mission you fight them on. Feedback from the lead engineer helped me understand how design can impact the time cost and financial cost of a project’s budget.
+
+<div className="flex-container">    
+  One large contribution I assisted with was designing the lead biker villain, “The Assassin”. I helped iterate on his gameplay, example dialogue, and the mission you fight them on. Feedback from the lead engineer helped me understand how design can impact the time cost and financial cost of a project’s budget.
+</div>
 
 <div className="flex-container">
   <img class="lightbox-image" src="../../assets/work-media/RoadRedemption/Road Redemption Combat.png" alt="Motorcycle Combat in Road Redemption" />
@@ -41,3 +47,4 @@ One large contribution I assisted with was designing the lead biker villain, “
   
   <p>I also learned about optimizing models for performance in-engine. Optimizing models can also be about ease of animation based on skin weights or bone complexity.</p>
 </div>
+

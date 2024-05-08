@@ -42,26 +42,24 @@ const projects = (await getCollection('work'))
 					tagline="I'm a creative developer, IT and QA professional based in New York."
 					align="start"
 				>
-					<div class="roles">
-						<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
-							<Pill>
-								<Icon icon="bug" size="1.33em" /> QA
-							</Pill>
-						</a>
-						<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
-							<Pill>
-								<Icon icon="code" size="1.33em" /> Creative Developer
-							</Pill>
-						</a>
-						<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
-							<Pill>
-								<Icon icon="pc" size="1.33em" /> IT Support
-							</Pill>
-						</a>
-						
-						<!-- <Pill><Icon icon="bug" size="1.33em" /> QA</Pill>
-						<Pill><Icon icon="code" size="1.33em" /> Creative Developer</Pill> -->
-					</div>
+				<div class="roles">
+					<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
+						<Pill>
+							<Icon icon="bug" size="1.33em" /> QA
+						</Pill>
+					</a>
+					<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
+						<Pill>
+							<Icon icon="code" size="1.33em" /> Creative Developer
+						</Pill>
+					</a>
+					<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
+						<Pill>
+							<Icon icon="pc" size="1.33em" /> IT Support
+						</Pill>
+					</a>
+
+				</div>
 				</Hero>
 
 				<img
@@ -71,15 +69,13 @@ const projects = (await getCollection('work'))
 					src=`../../assets/portfolio-rectangle-480x620.gif`
 				/>
 			</header>
-
-			<Skills />
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Selected Work</h3>
-					<p>Take a look below at some of my featured work for clients and personal work.</p>
+					<p>Check out my studio work and personal projects.</p>
 				</header>
 
 				<div class="gallery">
@@ -93,7 +89,6 @@ const projects = (await getCollection('work'))
 						}
 					</Grid>
 				</div>
-
 				<div class="cta">
 					<CallToAction href="/work/">
 						View All
@@ -101,10 +96,10 @@ const projects = (await getCollection('work'))
 					</CallToAction>
 				</div>
 			</section>
+			<Skills />
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Blog</h3>
-					<p>Check out my blog!</p>
+					<h3>Blog 📝</h3>
 				</header>
 
 				<div class="gallery">

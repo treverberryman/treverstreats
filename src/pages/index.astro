@@ -10,8 +10,9 @@ import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import Pill from '../components/Pill.astro';
-import BlogPreview from '../components/BlogPreview.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+import HowToPreview from '../components/HowToPreview.astro';
+import RecipePreview from '../components/RecipePreview.astro';
+// Removed GearPreview import as the file does not exist
 
 // Page section components
 import ContactCTA from '../components/ContactCTA.astro';
@@ -20,12 +21,16 @@ import Skills from '../components/Skills.astro';
 // Google Analytics Astro Component Import
 // import GoogleAnalytics from '../components/GoogleAnalytics.astro'
 
-// Content Fetching: List four most recent work projects
-const projects = (await getCollection('work'))
+// Content Fetching: List four most recent recipes, how-tos, and gear
+const recipes = (await getCollection('recipes'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
 
-	const blogs = (await getCollection('blogs'))
+const howTos = (await getCollection('howTos'))
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.slice(0, 4);
+
+const gear = (await getCollection('gear'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
 
@@ -35,38 +40,37 @@ const projects = (await getCollection('work'))
 <!-- <GoogleAnalytics measurementId={'G-ZG6HG1TBQ2'} /> -->
 <BaseLayout>
 	<div class="stack gap-20 lg:gap-48">
-		<div class="wrapper stack gap-8 lg:gap-20">
+		<div class="wrapper stack gap-4 lg:gap-8">
 			<header class="hero">
 				<Hero
-					title="Hi, my name is Trever Berryman 👋"
-					tagline="I'm a creative developer, IT and QA professional based in New York."
+					title="Welcome to Trever's Treats 👨‍🍳"
+					tagline="Delicious recipes, cooking tips, and kitchen gear reviews for home cooks of all skill levels."
 					align="start"
 				>
 				<div class="roles">
-					<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
+					<a href="/recipes/" style={{ textDecoration: 'none' }}>
 						<Pill>
-							<Icon icon="bug" size="1.33em" /> QA
+							<Icon icon="heart" size="1.33em" /> Recipes
 						</Pill>
 					</a>
-					<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
+					<a href="/how-tos/" style={{ textDecoration: 'none' }}>
 						<Pill>
-							<Icon icon="code" size="1.33em" /> Creative Developer
+							<Icon icon="pencil-line" size="1.33em" /> How-Tos
 						</Pill>
 					</a>
-					<a href="https://treverberryman.com/work/" style={{ textDecoration: 'none' }}>
+					<a href="/gear/" style={{ textDecoration: 'none' }}>
 						<Pill>
-							<Icon icon="pc" size="1.33em" /> IT Support
+							<Icon icon="trophy" size="1.33em" /> Gear
 						</Pill>
 					</a>
-
 				</div>
 				</Hero>
 
 				<img
-					alt="Trever Berryman in dress shirt with a animated outerspace background"
+					alt="Delicious home-cooked meal with fresh ingredients and warm lighting"
 					width="480"
 					height="620"
-					src=`../../assets/portfolio-rectangle-480x620.gif`
+					src="../../assets/stock-1.jpg"
 				/>
 			</header>
 		</div>
@@ -74,24 +78,24 @@ const projects = (await getCollection('work'))
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Selected Work</h3>
-					<p>Check out my studio work and personal projects.</p>
+					<h3>Featured Recipes</h3>
+					<p>Discover delicious recipes for every occasion and skill level.</p>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="offset">
 						{
-							projects.map((project) => (
+							recipes.map((recipe) => (
 								<li>
-									<PortfolioPreview project={project} />
+									<RecipePreview recipe={recipe} />
 								</li>
 							))
 						}
 					</Grid>
 				</div>
 				<div class="cta">
-					<CallToAction href="/work/">
-						View All
+					<CallToAction href="/recipes/">
+						View All Recipes
 						<Icon icon="arrow-right" size="1.2em" />
 					</CallToAction>
 				</div>
@@ -99,15 +103,16 @@ const projects = (await getCollection('work'))
 			<Skills />
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Blog 📝</h3>
+					<h3>Latest How-Tos 📝</h3>
+					<p>Master cooking techniques and learn essential kitchen skills.</p>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="offset">
 						{
-							blogs.map((blog) => (
+							howTos.map((howTo) => (
 								<li>
-									<BlogPreview project={blog} />
+									<HowToPreview howTo={howTo} />
 								</li>
 							))
 						}
@@ -115,8 +120,34 @@ const projects = (await getCollection('work'))
 				</div>
 
 				<div class="cta">
-					<CallToAction href="/blogs/">
-						View All
+					<CallToAction href="/how-tos/">
+						View All How-Tos
+						<Icon icon="arrow-right" size="1.2em" />
+					</CallToAction>
+				</div>
+			</section>
+
+			<section class="section with-background with-cta">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Kitchen Gear Reviews</h3>
+					<p>Discover the best tools and equipment to elevate your cooking.</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="offset">
+						{
+							gear.map((item) => (
+								<li>
+									{/* Removed GearPreview usage as the file does not exist */}
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+
+				<div class="cta">
+					<CallToAction href="/gear/">
+						View All Gear
 						<Icon icon="arrow-right" size="1.2em" />
 					</CallToAction>
 				</div>
@@ -142,7 +173,7 @@ const projects = (await getCollection('work'))
 	.hero img {
 		aspect-ratio: 5 / 4;
 		object-fit: cover;
-		object-position: top;
+		object-position: center;
 		border-radius: 1.5rem;
 		box-shadow: var(--shadow-md);
 	}
@@ -204,70 +235,22 @@ const projects = (await getCollection('work'))
 	}
 
 	.section-header {
-		justify-self: center;
 		text-align: center;
-		max-width: 50ch;
-		font-size: var(--text-md);
-		color: var(--gray-300);
 	}
 
-	.section-header h3 {
-		font-size: var(--text-2xl);
+	.gallery {
+		display: grid;
+		gap: 2rem;
 	}
 
-	@media (min-width: 50em) {
-		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
-			gap: 5rem;
-		}
-
-		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
-		}
-
-		.section-header {
-			grid-area: header;
-			font-size: var(--text-lg);
-		}
-
-		.section-header h3 {
-			font-size: var(--text-4xl);
-		}
-
-		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
-		}
-
-		.gallery {
-			grid-area: gallery;
-		}
-
-		.cta {
-			grid-area: cta;
-		}
-	}
-
-	/* ====================================================== */
-
-	.mention-card {
+	.cta {
 		display: flex;
-		height: 7rem;
 		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-300);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
 	}
 
 	@media (min-width: 50em) {
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
+		.gallery {
+			gap: 3rem;
 		}
 	}
 </style>

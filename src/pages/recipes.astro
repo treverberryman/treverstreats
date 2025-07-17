@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import RecipePreview from '../components/RecipePreview.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+// import GoogleAnalytics from '../components/GoogleAnalytics.astro'
+
+const recipes = (await getCollection('recipes')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+<BaseLayout
+	title="Recipes | Trever's Treats"
+	description="Delicious recipes for home cooks of all skill levels"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="Recipes"
+				tagline="Discover delicious recipes for every occasion and skill level."
+				align="start"
+			/>
+			<Grid variant="offset">
+				{
+					recipes.map((recipe) => (
+						<li>
+							<RecipePreview recipe={recipe} />
+						</li>
+					))
+				}
+			</Grid>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout> 

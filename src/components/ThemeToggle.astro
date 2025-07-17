@@ -1,69 +1,291 @@
 ---
-import Icon from './Icon.astro';
+// No imports needed for this component
 ---
 
 <theme-toggle>
-	<button>
-		<span class="sr-only">Dark theme</span>
-		<span class="icon light"><Icon icon="sun" /></span>
-		<span class="icon dark"><Icon icon="moon-stars" /></span>
-	</button>
+	<div class="toggle-container">
+		<div class="toggle-switch" id="themeToggle">
+			<div class="toggle-button">
+				<div class="sun"></div>
+				<div class="moon"></div>
+			</div>
+			<div class="stars">
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+			</div>
+			<div class="clouds">
+				<div class="cloud"></div>
+				<div class="cloud"></div>
+			</div>
+		</div>
+		<span class="sr-only">Toggle theme</span>
+	</div>
 </theme-toggle>
 
 <style>
-	button {
-		display: flex;
-		border: 0;
-		border-radius: 999rem;
-		padding: 0;
-		background-color: var(--gray-999);
-		box-shadow: inset 0 0 0 1px var(--accent-overlay);
-		cursor: pointer;
+	:root {
+		--toggle-width: 60px;
+		--toggle-height: 30px;
+		--toggle-padding: 2px;
+		--toggle-radius: 15px;
+		--toggle-btn-radius: 13px;
+		--toggle-btn-size: 26px;
+		--night-bg: #2c3e50;
+		--day-bg: #87ceeb;
+		--moon-color: #f39c12;
+		--sun-color: #f1c40f;
+		--star-color: #fff;
 	}
 
-	.icon {
-		z-index: 1;
+	.toggle-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.toggle-switch {
 		position: relative;
-		display: flex;
-		padding: 0.5rem;
-		width: 2rem;
-		height: 2rem;
-		font-size: 1rem;
-		color: var(--accent-overlay);
+		width: var(--toggle-width);
+		height: var(--toggle-height);
+		background: var(--day-bg);
+		border-radius: var(--toggle-radius);
+		cursor: pointer;
+		transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+		overflow: hidden;
 	}
 
-	.icon.light::before {
-		content: '';
-		z-index: -1;
+	.toggle-switch.active {
+		background: var(--night-bg);
+	}
+
+	.toggle-button {
 		position: absolute;
-		inset: 0;
-		background-color: var(--accent-regular);
-		border-radius: 999rem;
+		top: var(--toggle-padding);
+		left: var(--toggle-padding);
+		width: var(--toggle-btn-size);
+		height: var(--toggle-btn-size);
+		background: var(--sun-color);
+		border-radius: 50%;
+		transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 	}
 
-	:global(.theme-dark) .icon.light::before {
-		transform: translateX(100%);
+	.toggle-switch.active .toggle-button {
+		transform: translateX(30px);
+		background: var(--moon-color);
 	}
 
-	:global(.theme-dark) .icon.dark,
-	:global(html:not(.theme-dark)) .icon.light,
-	button[aria-pressed='false'] .icon.light {
-		color: var(--accent-text-over);
+	/* Sun */
+	.sun {
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		background: var(--sun-color);
+		border-radius: 50%;
+		opacity: 1;
+		transform: scale(1);
+		transition: all 0.4s ease;
 	}
 
-	@media (prefers-reduced-motion: no-preference) {
-		.icon,
-		.icon.light::before {
-			transition:
-				transform var(--theme-transition),
-				color var(--theme-transition);
+	.sun::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 18px;
+		height: 18px;
+		background: transparent;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+		box-shadow: 
+			0 -7px 0 -5px var(--sun-color),
+			5px -5px 0 -5px var(--sun-color),
+			7px 0 0 -5px var(--sun-color),
+			5px 5px 0 -5px var(--sun-color),
+			0 7px 0 -5px var(--sun-color),
+			-5px 5px 0 -5px var(--sun-color),
+			-7px 0 0 -5px var(--sun-color),
+			-5px -5px 0 -5px var(--sun-color);
+	}
+
+	.toggle-switch.active .sun {
+		opacity: 0;
+		transform: scale(0);
+	}
+
+	/* Moon */
+	.moon {
+		position: absolute;
+		width: 15px;
+		height: 15px;
+		background: var(--moon-color);
+		border-radius: 50%;
+		transition: all 0.4s ease;
+		opacity: 0;
+		transform: scale(0);
+	}
+
+	.moon::before {
+		content: '';
+		position: absolute;
+		top: 2.5px;
+		left: 2.5px;
+		width: 10px;
+		height: 10px;
+		background: var(--night-bg);
+		border-radius: 50%;
+		transition: all 0.4s ease;
+	}
+
+	.toggle-switch.active .moon {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	/* Clouds */
+	.clouds {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+		transition: opacity 0.4s ease;
+	}
+
+	.cloud {
+		position: absolute;
+		background: white;
+		border-radius: 12.5px;
+		opacity: 0.8;
+	}
+
+	.cloud:nth-child(1) {
+		width: 10px;
+		height: 4px;
+		top: 10px;
+		left: 7.5px;
+		animation: float 3s infinite;
+	}
+
+	.cloud:nth-child(2) {
+		width: 7.5px;
+		height: 3px;
+		top: 17.5px;
+		left: 12.5px;
+		animation: float 3s infinite 1s;
+	}
+
+	.cloud::before {
+		content: '';
+		position: absolute;
+		background: white;
+		border-radius: 50%;
+	}
+
+	.cloud:nth-child(1)::before {
+		width: 5px;
+		height: 5px;
+		top: -2.5px;
+		left: 1.5px;
+	}
+
+	.cloud:nth-child(2)::before {
+		width: 4px;
+		height: 4px;
+		top: -2px;
+		left: 1px;
+	}
+
+	.toggle-switch.active .clouds {
+		opacity: 0;
+	}
+
+	/* Stars */
+	.stars {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		transition: opacity 0.4s ease;
+	}
+
+	.star {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		background: var(--star-color);
+		border-radius: 50%;
+		animation: twinkle 2s infinite;
+	}
+
+	.star:nth-child(1) {
+		top: 7.5px;
+		left: 10px;
+		animation-delay: 0s;
+	}
+
+	.star:nth-child(2) {
+		top: 12.5px;
+		left: 17.5px;
+		animation-delay: 0.5s;
+	}
+
+	.star:nth-child(3) {
+		top: 17.5px;
+		left: 7.5px;
+		animation-delay: 1s;
+	}
+
+	.star:nth-child(4) {
+		top: 10px;
+		left: 22.5px;
+		animation-delay: 1.5s;
+	}
+
+	.toggle-switch.active .stars {
+		opacity: 1;
+	}
+
+	@keyframes twinkle {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.3; }
+	}
+
+	@keyframes float {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-1.5px); }
+	}
+
+	/* Responsive */
+	@media (max-width: 480px) {
+		:root {
+			--toggle-width: 50px;
+			--toggle-height: 25px;
+			--toggle-btn-size: 21px;
+		}
+		
+		.toggle-switch.active .toggle-button {
+			transform: translateX(25px);
 		}
 	}
 
-	@media (forced-colors: active) {
-		.icon.light::before {
-			background-color: SelectedItem;
-		}
+	/* Accessibility */
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
 	}
 </style>
 
@@ -72,19 +294,27 @@ import Icon from './Icon.astro';
 		constructor() {
 			super();
 
-			const button = this.querySelector('button')!;
+			const toggle = this.querySelector('#themeToggle')!;
 
 			/** Set the theme to dark/light mode. */
 			const setTheme = (dark: boolean) => {
 				document.documentElement.classList[dark ? 'add' : 'remove']('theme-dark');
-				button.setAttribute('aria-pressed', String(dark));
+				toggle.classList[dark ? 'add' : 'remove']('active');
+				// Save theme preference to localStorage
+				localStorage.setItem('theme', dark ? 'dark' : 'light');
 			};
 
 			// Toggle the theme when a user clicks the button.
-			button.addEventListener('click', () => setTheme(!this.isDark()));
+			toggle.addEventListener('click', () => setTheme(!this.isDark()));
 
-			// Initialize button state to reflect current theme.
-			setTheme(this.isDark());
+			// Initialize button state to reflect current theme (default to light mode).
+			// Only set dark mode if explicitly stored in localStorage
+			const storedTheme = localStorage.getItem('theme');
+			if (storedTheme === 'dark') {
+				setTheme(true);
+			} else {
+				setTheme(false);
+			}
 		}
 
 		isDark() {

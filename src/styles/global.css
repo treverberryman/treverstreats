@@ -16,10 +16,11 @@
 	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
 	--gray-999: #ffffff;
 
-	--accent-light: #c561f6;
-	--accent-regular: #7611a6;
-	--accent-dark: #1c0056;
-	--accent-overlay: hsla(280, 89%, 67%, 0.33);
+	/* Warm food-friendly accent colors */
+	--accent-light: #ff8a65;
+	--accent-regular: #e64a19;
+	--accent-dark: #bf360c;
+	--accent-overlay: hsla(16, 89%, 67%, 0.33);
 	--accent-subtle-overlay: var(--accent-overlay);
 	--accent-text-over: var(--gray-999);
 
@@ -38,7 +39,7 @@
 	);
 	--gradient-accent-orange: linear-gradient(
 		150deg,
-		#ca7879,
+		#ffab91,
 		var(--accent-regular),
 		var(--accent-dark)
 	);
@@ -88,20 +89,21 @@
 	--gray-999-basis: 225, 31%, 5%;
 	--gray-999: #090b11;
 
-	--accent-light: #1c0056;
-	--accent-regular: #7611a6;
-	--accent-dark: #c561f6;
-	--accent-overlay: hsla(280, 89%, 67%, 0.33);
-	--accent-subtle-overlay: hsla(281, 81%, 36%, 0.33);
+	/* Dark theme warm colors */
+	--accent-light: #bf360c;
+	--accent-regular: #e64a19;
+	--accent-dark: #ff8a65;
+	--accent-overlay: hsla(16, 89%, 67%, 0.33);
+	--accent-subtle-overlay: hsla(16, 81%, 36%, 0.33);
 	--accent-text-over: var(--gray-0);
 
 	--link-color: var(--accent-dark);
 
-	--gradient-stop-1: #4c11c6;
+	--gradient-stop-1: #d84315;
 	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-999) 81%);
 	--gradient-accent-orange: linear-gradient(
 		150deg,
-		#ca7879,
+		#ffab91,
 		var(--accent-regular),
 		var(--accent-light)
 	);
@@ -203,85 +205,72 @@ h5 {
 	flex-direction: column;
 }
 
-.iframe-container {
-  display: flex;
-  justify-content: center;
+.stack > * + * {
+	margin-top: var(--stack-space, 1rem);
 }
 
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center; /* Adjust this as needed */
-  justify-content: center; /* Adjust this as needed */
-	/* width: 70%; */
-  gap: 10px; /* Space between images */
+.stack.gap-2 {
+	--stack-space: 0.5rem;
 }
 
-.flex-container img {
-  flex: 1; /* Allows images to grow and shrink as needed */
-  max-width: 50%; /* Ensures image max-width does not exceed its container */
-  height: auto; /* Maintains aspect ratio */
+.stack.gap-4 {
+	--stack-space: 1rem;
 }
 
-.flex-container .lightbox-image {
-  /* Your styles for images */
-  cursor: pointer;
-  transition: transform 0.3s ease;
+.stack.gap-8 {
+	--stack-space: 2rem;
 }
 
-.flex-container .lightbox-image:hover {
-  /* Style for hover state */
-  transform: scale(1.05);
+.stack.gap-10 {
+	--stack-space: 2.5rem;
 }
 
-.gap-2 {
-	gap: 0.5rem;
+.stack.gap-15 {
+	--stack-space: 3.75rem;
 }
-.gap-4 {
-	gap: 1rem;
+
+.stack.gap-20 {
+	--stack-space: 5rem;
 }
-.gap-8 {
-	gap: 2rem;
+
+.stack.gap-30 {
+	--stack-space: 7.5rem;
 }
-.gap-10 {
-	gap: 2.5rem;
-}
-.gap-15 {
-	gap: 3.75rem;
-}
-.gap-20 {
-	gap: 5rem;
-}
-.gap-30 {
-	gap: 7.5rem;
-}
-.gap-48 {
-	gap: 12rem;
+
+.stack.gap-48 {
+	--stack-space: 12rem;
 }
 
 @media (min-width: 50em) {
 	.lg\:gap-2 {
-		gap: 0.5rem;
+		--stack-space: 0.5rem;
 	}
+
 	.lg\:gap-4 {
-		gap: 1rem;
+		--stack-space: 1rem;
 	}
+
 	.lg\:gap-8 {
-		gap: 2rem;
+		--stack-space: 2rem;
 	}
+
 	.lg\:gap-10 {
-		gap: 2.5rem;
+		--stack-space: 2.5rem;
 	}
+
 	.lg\:gap-15 {
-		gap: 3.75rem;
+		--stack-space: 3.75rem;
 	}
+
 	.lg\:gap-20 {
-		gap: 5rem;
+		--stack-space: 5rem;
 	}
+
 	.lg\:gap-30 {
-		gap: 7.5rem;
+		--stack-space: 7.5rem;
 	}
+
 	.lg\:gap-48 {
-		gap: 12rem;
+		--stack-space: 12rem;
 	}
 }

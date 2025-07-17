@@ -1,21 +1,33 @@
-# build output
-dist/
-# generated types
-.astro/
-
-# dependencies
+# Node
 node_modules/
 
-# logs
+# Astro build output
+dist/
+.astro/
+
+# Local env files
+.env
+.env.*
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
+# OS
 .DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Misc
+*.local
+*.swp
+
+# Obsidian vault (if present)
+treverstreats-obsidian/

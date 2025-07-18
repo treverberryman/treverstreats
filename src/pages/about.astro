@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 ---
-<BaseLayout title="About | Trever Berryman" description="About | Trever Berryman">
+<BaseLayout title="About | Trever's Treats" description="About | Trever's Treats">
 	<div class="stack gap-20">
 		<main class="wrapper about">
 			<Hero
@@ -13,16 +13,20 @@ import Hero from '../components/Hero.astro';
 				<img
 					width="1553"
 					height="873"
-					src="../../assets/AlienAboutMe.png"
-					alt=""
+					src="../../assets/stock-2.jpg"
+					alt="Trever in the kitchen cooking a delicious meal"
 				/>
 			</Hero>
 
 			<section>
-				<h2 class="section-title">Background</h2>
+				<h2 class="section-title">My Cooking Journey</h2>
 				<div class="content">
 					<p>
-						Hi, I’m Trever (he/they) 👋 I'm a creative developer, IT and technical QA professional based in New York. I’m interested in automation and CI/CD and I'm learning more about those currently. I'm also a big #a11y for inclusive software development that incorporates diverse teams and content.
+						Hi, I'm Trever (he/they) 👋 I'm a passionate home cook and food enthusiast based in New York. I love experimenting with flavors, mastering new techniques, and sharing my culinary discoveries with fellow food lovers.
+					</p>
+					<br>
+					<p>
+						My approach to cooking is all about making delicious food accessible to everyone, regardless of skill level. Whether you're a complete beginner or an experienced cook looking for new inspiration, I'm here to help you create amazing meals in your own kitchen.
 					</p>
 					<br>
 					<p>
@@ -31,13 +35,13 @@ import Hero from '../components/Hero.astro';
 				</div>
 			</section>
 			<section>
-				<h2 class="section-title">Skills</h2>
+				<h2 class="section-title">Cooking Philosophy</h2>
 				<div class="content">
-					<p><b>Software:</b> JIRA, Test Rail, Perforce, Git, Unity3D, Command Line, TeamCity, Microsoft Azure PlayFab</p>
+					<p><b>Fresh Ingredients:</b> I believe in using the best quality ingredients available, supporting local farmers and markets whenever possible.</p>
 					<br>
-					<p><b>Code:</b> C#, Javascript, HTML5, CSS</p>
+					<p><b>Technique Over Complexity:</b> Simple, well-executed techniques often produce the most satisfying results. I focus on teaching fundamental skills that build confidence.</p>
 					<br>
-					<p><b>Operating Systems:</b> macOS, Windows 11/10/8/7/Vista/XP, iOS, Android</p>
+					<p><b>Creativity & Experimentation:</b> Cooking should be fun! I encourage experimentation and adapting recipes to suit your taste preferences and dietary needs.</p>
 				</div>
 			</section>
 		</main>
@@ -67,40 +71,23 @@ import Hero from '../components/Hero.astro';
 	}
 
 	.section-title {
-		grid-column-start: 1;
-		font-size: var(--text-xl);
-		color: var(--gray-0);
+		font-size: var(--text-2xl);
+		color: var(--gray-100);
+		margin-bottom: 1rem;
 	}
 
-	.content {
-		grid-column: 2 / 4;
+	.content p {
+		line-height: 1.6;
+		margin-bottom: 1rem;
 	}
 
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+	.content a {
+		color: var(--accent-regular);
+		text-decoration: underline;
 	}
 
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
-	}
-
-	@media (min-width: 50em) {
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
-		}
-
-		.about > :global(:first-child) {
-			grid-column-start: 2;
-		}
-
-		section {
-			display: contents;
-			font-size: var(--text-lg);
-		}
+	.content a:hover {
+		color: var(--accent-light);
 	}
 </style>
 

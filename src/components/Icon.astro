@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'astro/types';
 import { iconPaths } from './IconPaths';
 
 interface Props {
-	icon: keyof typeof iconPaths;
+	icon: string; // Allow any string to support all custom icons
 	color?: string;
 	gradient?: boolean;
 	size?: string;

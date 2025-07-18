@@ -6,6 +6,7 @@
 import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 
 interface Props {
 	title?: string | undefined;
@@ -18,16 +19,19 @@ const { title, description } = Astro.props;
 <html lang="en">
 	<head>
 		<MainHead title={title} description={description} />
+		<GoogleAnalytics measurementId="G-ZG6HG1TBQ2" />
 	</head>
 	<body>
 		<div class="stack backgrounds">
 			<Nav />
-			<slot />
+			<main class="main-content">
+				<slot />
+			</main>
 			<Footer />
 		</div>
 
 		<script>
-			// Add “loaded” class once the document has completely loaded.
+			// Add "loaded" class once the document has completely loaded.
 			addEventListener('load', () => document.documentElement.classList.add('loaded'));
 		</script>
 
@@ -85,6 +89,16 @@ const { title, description } = Astro.props;
 					--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-dark-1440w.jpg');
 					--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-dark-1440w.jpg');
 					--bg-image-footer: url('/assets/backgrounds/bg-footer-dark-1440w.jpg');
+				}
+			}
+
+			.main-content {
+				padding-top: 4rem; /* Account for fixed header */
+			}
+
+			@media (min-width: 50em) {
+				.main-content {
+					padding-top: 5rem; /* Slightly more padding for desktop */
 				}
 			}
 

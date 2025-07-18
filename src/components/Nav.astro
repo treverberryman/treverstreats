@@ -5,24 +5,35 @@ import type { iconPaths } from './IconPaths';
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
-		{ label: 'Work', href: '/work/' },
+	{ label: 'Recipes', href: '/recipes/' },
+	{ label: 'How-Tos', href: '/how-tos/' },
+	{ label: 'Gear', href: '/gear/' },
 	{ label: 'About', href: '/about/' },
-	{ label: 'Blog', href: '/blogs/' },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
-	{ label: 'Twitter', href: 'https://linkedin.com/in/treverberryman', icon: 'linkedin-logo' },
-	{ label: 'GitHub', href: 'https://github.com/treverberryman', icon: 'github-logo' },
+	{ label: 'Pinterest', href: 'https://www.pinterest.com/treverstreats/', icon: 'pinterest-logo' },
+	{ label: 'Instagram', href: 'https://www.instagram.com/treverstreats/', icon: 'instagram-logo' },
+	{ label: 'YouTube', href: 'https://www.youtube.com/@treverstreats', icon: 'youtube-logo' },
+	{ label: 'TikTok', href: 'https://www.tiktok.com/@treverstreats', icon: 'tiktok-logo' },
+	{ label: 'Patreon', href: 'https://www.patreon.com/treverstreats', icon: 'patreon-logo' },
+	{ label: 'Throne', href: 'https://throne.com/treverstreats', icon: 'throne-logo' },
 ];
 ---
 
-<nav>
+<nav id="main-nav">
 	<div class="menu-header">
 		<a href="/" class="site-title">
-			<Icon icon="terminal-window" color="var(--accent-regular)" size="1.6em" gradient />
-			 Trever Berryman
+			<img src="/assets/Trevers-Treats_Logo.png" alt="Trever's Treats Logo" style="height: 2em; width: auto; vertical-align: middle; margin-right: 0.5em;" />
+			 Trever's Treats
 		</a>
+		<form class="nav-search" role="search" aria-label="Site search" action="/search/" method="GET" style="display: flex; align-items: center; gap: 0.5em;">
+			<input type="text" name="q" placeholder="Search recipes, how-tos, gear..." aria-label="Search" style="padding: 0.4em 0.8em; border-radius: 0.5em; border: 1px solid var(--gray-400); font-size: 1em;" />
+			<button type="submit" class="button" aria-label="Search">
+				<Icon icon="list" />
+			</button>
+		</form>
 		<menu-button>
 			<template>
 				<button class="menu-button" aria-expanded="false">
@@ -103,6 +114,15 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 						</a>
 					))
 				}
+				<a href="https://tiktok.com/@treverstreats" class="social-link">
+					<Icon icon="tiktok-logo" size="1.2em" /> TikTok
+				</a>
+				<a href="https://patreon.com/treverstreats" class="social-link">
+					<Icon icon="patreon-logo" size="1.2em" /> Patreon
+				</a>
+				<a href="https://throne.com/treverstreats" class="social-link">
+					<Icon icon="throne-logo" size="1.2em" /> Throne
+				</a>
 			</div>
 
 			<div class="theme-toggle">
@@ -147,33 +167,87 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		}
 	}
 	customElements.define('menu-button', MenuButton);
+
+	// Header scroll behavior
+	class HeaderScroll {
+		private nav: HTMLElement | null;
+		private lastScrollY: number;
+		private scrollThreshold: number;
+		private isHidden: boolean;
+
+		constructor() {
+			this.nav = document.getElementById('main-nav');
+			this.lastScrollY = window.scrollY;
+			this.scrollThreshold = window.innerHeight * 0.25; // 1/4 of viewport height
+			this.isHidden = false;
+			
+			this.init();
+		}
+
+		init() {
+			window.addEventListener('scroll', this.handleScroll.bind(this), { passive: true });
+		}
+
+		handleScroll() {
+			const currentScrollY = window.scrollY;
+			
+			// Hide header after scrolling down 1/4 of the viewport
+			if (currentScrollY > this.scrollThreshold && !this.isHidden) {
+				this.nav?.classList.add('nav-hidden');
+				this.isHidden = true;
+			}
+			// Show header when scrolling back up
+			else if (currentScrollY <= this.scrollThreshold && this.isHidden) {
+				this.nav?.classList.remove('nav-hidden');
+				this.isHidden = false;
+			}
+			
+			this.lastScrollY = currentScrollY;
+		}
+	}
+
+	// Initialize header scroll behavior when DOM is loaded
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', () => new HeaderScroll());
+	} else {
+		new HeaderScroll();
+	}
 </script>
-
-
 
 <style>
 	nav {
 		z-index: 9999;
-		position: relative;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
 		font-family: var(--font-brand);
 		font-weight: 500;
-		margin-bottom: 3.5rem;
+		background-color: var(--gray-999);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid var(--gray-800);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	nav.nav-hidden {
+		transform: translateY(-100%);
 	}
 
 	.menu-header {
 		display: flex;
 		justify-content: space-between;
-		gap: 0.5rem;
-		padding: 1.5rem;
+		gap: 0.25rem;
+		padding: 0.75rem;
 	}
 
 	.site-title {
 		display: flex;
-		gap: 0.5rem;
+		gap: 0.25rem;
 		align-items: center;
 		line-height: 1.1;
 		color: var(--gray-0);
 		text-decoration: none;
+		font-size: var(--text-md);
 	}
 
 	.menu-button {
@@ -181,17 +255,17 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		display: flex;
 		border: 0;
 		border-radius: 999rem;
-		padding: 0.5rem;
-		font-size: 1.5rem;
+		padding: 0.25rem;
+		font-size: 1.2rem;
 		color: var(--gray-300);
-		background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
+		background: var(--gray-800);
 		box-shadow: var(--shadow-md);
+		transition: all var(--theme-transition);
 	}
 
 	.menu-button[aria-expanded='true'] {
 		color: var(--gray-0);
-		background: linear-gradient(180deg, var(--gray-600), transparent),
-			radial-gradient(var(--gray-900), var(--gray-800) 150%);
+		background: var(--gray-700);
 	}
 
 	.menu-button[hidden] {
@@ -202,7 +276,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		position: absolute;
 		inset: -1px;
 		content: '';
-		background: var(--gradient-stroke);
+		background: var(--gray-700);
 		border-radius: 999rem;
 		z-index: -1;
 	}
@@ -217,11 +291,11 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
-		font-size: var(--text-md);
+		gap: 0.5rem;
+		font-size: var(--text-sm);
 		line-height: 1.2;
 		list-style: none;
-		padding: 2rem;
+		padding: 1rem;
 		background-color: var(--gray-999);
 		border-bottom: 1px solid var(--gray-800);
 	}
@@ -237,13 +311,13 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	}
 
 	.menu-footer {
-		--icon-size: var(--text-xl);
-		--icon-padding: 0.5rem;
+		--icon-size: var(--text-lg);
+		--icon-padding: 0.25rem;
 
 		display: flex;
 		justify-content: space-between;
-		gap: 0.75rem;
-		padding: 1.5rem 2rem 1.5rem 1.5rem;
+		gap: 0.375rem;
+		padding: 0.75rem 1rem 0.75rem 0.75rem;
 		background-color: var(--gray-999);
 		border-radius: 0 0 0.75rem 0.75rem;
 		box-shadow: var(--shadow-lg);
@@ -252,7 +326,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	.socials {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.625rem;
+		gap: 0.3125rem;
 		font-size: var(--icon-size);
 	}
 
@@ -275,13 +349,26 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		height: calc(var(--icon-size) + 2 * var(--icon-padding));
 	}
 
+	.nav-search input[type="text"] {
+		border: 1px solid var(--gray-400);
+		padding: 0.4em 0.8em;
+		border-radius: 0.5em;
+		font-size: 1em;
+		background: var(--gray-999);
+		color: var(--gray-0);
+	}
+
+	.nav-search button {
+		margin-left: 0.2em;
+	}
+
 	@media (min-width: 50em) {
 		nav {
 			display: grid;
 			grid-template-columns: 1fr auto 1fr;
 			align-items: center;
-			padding: 2.5rem 5rem;
-			gap: 1rem;
+			padding: 1.25rem 2.5rem;
+			gap: 0.5rem;
 		}
 
 		.menu-header {
@@ -289,7 +376,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		}
 
 		.site-title {
-			font-size: var(--text-lg);
+			font-size: var(--text-md);
 		}
 
 		.menu-content {
@@ -302,8 +389,8 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			font-size: var(--text-sm);
 			border-radius: 999rem;
 			border: 0;
-			padding: 0.5rem 0.5625rem;
-			background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
+			padding: 0.25rem 0.28125rem;
+			background: var(--gray-800);
 			box-shadow: var(--shadow-md);
 		}
 
@@ -311,13 +398,13 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			position: absolute;
 			inset: -1px;
 			content: '';
-			background: var(--gradient-stroke);
+			background: var(--gray-700);
 			border-radius: 999rem;
 			z-index: -1;
 		}
 
 		.link {
-			padding: 0.5rem 1rem;
+			padding: 0.25rem 0.5rem;
 			border-radius: 999rem;
 			transition:
 				color var(--theme-transition),
@@ -336,7 +423,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		}
 
 		.menu-footer {
-			--icon-padding: 0.375rem;
+			--icon-padding: 0.1875rem;
 
 			justify-self: flex-end;
 			align-items: center;

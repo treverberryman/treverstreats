@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Contact | Trever's Treats" description="Contact or send feedback to Trever's Treats.">
+  <main class="wrapper stack gap-10" style="max-width: 36rem; margin: 0 auto; padding: 3rem 1rem;">
+    <h1>Contact / Feedback</h1>
+    <form class="contact-form" method="POST" onsubmit="event.preventDefault(); this.reset(); document.getElementById('contact-thankyou').style.display='block';">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required autocomplete="name" />
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required autocomplete="email" />
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit" class="button">Send</button>
+    </form>
+    <div id="contact-thankyou" style="display:none; color: var(--accent-regular); font-weight: 600; margin-top: 1.5em;">Thank you for your message!</div>
+  </main>
+</BaseLayout>
+
+<style>
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 0.6em 1em;
+  border-radius: 0.5em;
+  border: 1px solid var(--gray-400);
+  font-size: 1em;
+  background: var(--gray-999);
+  color: var(--gray-0);
+}
+.contact-form button {
+  align-self: flex-start;
+}
+</style> 

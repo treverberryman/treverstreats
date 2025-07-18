@@ -12,6 +12,10 @@ import Grid from '../components/Grid.astro';
 const recipes = (await getCollection('recipes')).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
+const tagParam = Astro.url?.searchParams?.get('tag') || '';
+const filteredRecipes = tagParam ? recipes.filter(r => r.data.tags?.includes(tagParam)) : recipes;
+const allTags = Array.from(new Set(recipes.flatMap(r => r.data.tags || [])));
+const popularRecipes = recipes.slice(0, 3);
 ---
 <BaseLayout
 	title="Recipes | Trever's Treats"
@@ -20,19 +24,49 @@ const recipes = (await getCollection('recipes')).sort(
 	<div class="stack gap-20">
 		<main class="wrapper stack gap-8">
 			<Hero
-				title="Recipes"
-				tagline="Discover delicious recipes for every occasion and skill level."
 				align="start"
-			/>
+			>
+				<span slot="title">Recipes</span>
+				<span slot="tagline">Discover delicious recipes for every occasion and skill level.</span>
+			</Hero>
+			<div class="tag-filters" style="margin-bottom: 1.5em; display: flex; flex-wrap: wrap; gap: 0.5em;">
+				<form method="GET" style="display: flex; flex-wrap: wrap; gap: 0.5em;">
+					{allTags.map(tag => (
+						<button
+							type="submit"
+							name="tag"
+							value={tag}
+							class="button"
+							aria-pressed={tagParam === tag}
+							style={`background: ${tagParam === tag ? 'var(--accent-dark)' : 'var(--gray-400)'}; color: var(--gray-999);`}
+						>
+							{tag}
+						</button>
+					))}
+					{tagParam && (
+						<button type="submit" name="tag" value="" class="button" style="background: var(--gray-300); color: var(--gray-0);">Clear</button>
+					)}
+				</form>
+			</div>
 			<Grid variant="offset">
 				{
-					recipes.map((recipe) => (
+					filteredRecipes.map((recipe) => (
 						<li>
 							<RecipePreview recipe={recipe} />
 						</li>
 					))
 				}
 			</Grid>
+			<section class="popular-recipes" style="margin-top: 2.5em;">
+				<h2>Popular Recipes</h2>
+				<Grid variant="offset">
+					{popularRecipes.map((recipe) => (
+						<li>
+							<RecipePreview recipe={recipe} />
+						</li>
+					))}
+				</Grid>
+			</section>
 		</main>
 		<ContactCTA />
 	</div>

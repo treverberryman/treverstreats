@@ -5,3 +5,7 @@ Can you convert this website I already made with Astro into a cooking website? T
 Recipes, Gear, About
 
 I don't want you to change any functionality for now, just make it look similar to this blog:
+
+## TODO
+
+- [ ] Set up deployment at `treats.treverberryman.com` (option 2: subdomain of personal site) for Trever's Treats.

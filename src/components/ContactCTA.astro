@@ -9,6 +9,12 @@ import Icon from './Icon.astro';
 		Send Me a Message
 		<Icon icon="paper-plane-tilt" size="1.2em" />
 	</CallToAction>
+
+	<form class="newsletter-signup" action="#" method="POST" autocomplete="off" style="margin-top: 2rem; display: flex; flex-direction: row; align-items: center; gap: 0.5em; justify-content: center;">
+		<label for="newsletter-email" style="font-size: 1.1em; margin-right: 0.5em;">Subscribe to the Newsletter</label>
+		<input id="newsletter-email" name="email" type="email" placeholder="Your email address" required style="padding: 0.5em 1em; border-radius: 0.5em; border: 1px solid var(--gray-400); font-size: 1em; min-width: 220px;" />
+		<button type="submit" class="button" style="margin-top: 0;">Subscribe</button>
+	</form>
 </aside>
 
 <style>
@@ -42,5 +48,24 @@ import Icon from './Icon.astro';
 			font-size: var(--text-3xl);
 			text-align: left;
 		}
+	}
+
+	.newsletter-signup input[type="email"] {
+		border: 1px solid var(--gray-400);
+		padding: 0.5em 1em;
+		border-radius: 0.5em;
+		font-size: 1em;
+		background: var(--gray-999);
+		color: var(--gray-0);
+	}
+	.newsletter-signup button {
+		margin-left: 0.2em;
+	}
+	.newsletter-signup {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.5em;
+		justify-content: center;
 	}
 </style>

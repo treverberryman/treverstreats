@@ -9,7 +9,11 @@ import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
 
 interface Props {
-	entry: CollectionEntry<'gear'>;
+	entry: CollectionEntry<'gear'> & {
+		data: CollectionEntry<'gear'>['data'] & {
+			affiliateLink?: string;
+		};
+	};
 }
 
 export async function getStaticPaths() {
@@ -30,7 +34,8 @@ const { Content } = await entry.render();
 			<header>
 				<div class="wrapper stack gap-2">
 					<a class="back-link" href="/gear/"><Icon icon="arrow-left" /> Gear</a>
-					<Hero title={entry.data.title} align="start">
+					<Hero align="start">
+						<span slot="title">{entry.data.title}</span>
 						<div class="details">
 							<div class="gear-meta">
 								{entry.data.category && <span class="category">{entry.data.category}</span>}
@@ -40,7 +45,7 @@ const { Content } = await entry.render();
 										<span>Rating: </span>
 										{Array.from({ length: 5 }, (_, i) => (
 											<Icon 
-												icon="heart" 
+												icon="trophy" 
 												size="1em" 
 												color={i < entry.data.rating ? "var(--accent-regular)" : "var(--gray-400)"}
 											/>
@@ -62,6 +67,13 @@ const { Content } = await entry.render();
 					<div class="content">
 						<Content />
 					</div>
+					{entry.data.affiliateLink && (
+						entry.data.affiliateLink.includes('amazon') ? (
+							<a href={entry.data.affiliateLink} class="affiliate-link subtle" target="_blank" rel="noopener sponsored" style="font-size: 0.98em; color: var(--accent-regular); text-decoration: underline dotted; margin: 1em 0; display: inline-block;">View on Amazon</a>
+						) : (
+							<a href={entry.data.affiliateLink} class="button affiliate-btn" target="_blank" rel="noopener sponsored" style="margin: 1.5em 0; font-size: 1.1em; font-weight: 700; background: var(--accent-dark); color: var(--gray-999);">Buy Now</a>
+						)
+					)}
 					{entry.data.pros && entry.data.pros.length > 0 && (
 						<div class="pros-cons">
 							<div class="pros">
@@ -82,10 +94,27 @@ const { Content } = await entry.render();
 					)}
 				</div>
 			</main>
+			<div class="patreon-callout" style="margin: 2em 0; text-align: center;">
+				<p>Enjoying these reviews? <a href="https://patreon.com/treverstreats" target="_blank" rel="noopener">Support us on Patreon!</a></p>
+			</div>
 		</div>
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
+<footer class="post-footer" style="margin-top: 2.5em;">
+  <div class="social-share" style="display: flex; gap: 1em; align-items: center; margin-bottom: 1.5em;">
+    <span>Share:</span>
+    <a href="#" aria-label="Share on Facebook">Facebook</a>
+    <a href="#" aria-label="Share on Twitter">Twitter</a>
+    <a href="#" aria-label="Share on Pinterest">Pinterest</a>
+    <a href="#" aria-label="Share by Email">Email</a>
+  </div>
+  <div class="comments-section" style="margin-top: 2em;">
+    <h3>Comments</h3>
+    <p>Comments coming soon!</p>
+  </div>
+</footer>
 
 <style>
 	header {
@@ -176,5 +205,32 @@ const { Content } = await entry.render();
 		.pros-cons {
 			grid-template-columns: 1fr 1fr;
 		}
+	}
+	.affiliate-btn {
+		display: inline-block;
+		padding: 0.8em 2em;
+		border-radius: 0.75em;
+		font-size: 1.1em;
+		font-weight: 700;
+		background: var(--accent-dark);
+		color: var(--gray-999);
+		text-decoration: none;
+		transition: background 0.2s;
+		margin: 1.5em 0;
+	}
+	.affiliate-btn:hover {
+		background: var(--accent-regular);
+	}
+	.patreon-callout a {
+		color: var(--accent-regular);
+		font-weight: 600;
+		text-decoration: underline;
+	}
+	.affiliate-link.subtle {
+		font-size: 0.98em;
+		color: var(--accent-regular);
+		text-decoration: underline dotted;
+		margin: 1em 0;
+		display: inline-block;
 	}
 </style> 

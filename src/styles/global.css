@@ -129,6 +129,46 @@ body {
 	font-family: var(--font-body);
 	-webkit-font-smoothing: antialiased;
 	line-height: 1.5;
+	font-size: 1.08rem; /* Slightly increased for readability */
+}
+
+/* Button styles */
+button, .button {
+	background: var(--accent-regular);
+	color: var(--gray-999);
+	border: none;
+	border-radius: 0.5em;
+	padding: 0.6em 1.2em;
+	font-size: 1em;
+	font-family: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+	box-shadow: var(--shadow-sm);
+}
+button:focus, .button:focus {
+	outline: 2px solid var(--accent-dark);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 3px var(--accent-overlay);
+}
+button:hover, .button:hover {
+	background: var(--accent-dark);
+	color: var(--gray-999);
+}
+
+/* Link focus/hover states */
+a:focus {
+	outline: 2px solid var(--accent-dark);
+	outline-offset: 2px;
+}
+a:hover {
+	color: var(--accent-dark);
+	text-decoration: underline wavy;
+}
+
+/* Headings: ensure strong color contrast */
+h1, h2, h3, h4, h5 {
+	color: var(--gray-0);
 }
 
 *,
@@ -146,17 +186,6 @@ img {
 a {
 	color: var(--link-color);
 	text-decoration: underline;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-	line-height: 1.1;
-	font-family: var(--font-brand);
-	font-weight: 600;
-	color: var(--gray-100);
 }
 
 h1 {

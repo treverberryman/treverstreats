@@ -13,18 +13,27 @@ const textLinks: { label: string; href: string }[] = [
 
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
-	{ label: 'Pinterest', href: 'https://pinterest.com/treverstreats', icon: 'pinterest-logo' },
-	{ label: 'Instagram', href: 'https://instagram.com/treverstreats', icon: 'instagram-logo' },
-	{ label: 'YouTube', href: 'https://youtube.com/@treverstreats', icon: 'youtube-logo' },
+	{ label: 'Pinterest', href: 'https://www.pinterest.com/treverstreats/', icon: 'pinterest-logo' },
+	{ label: 'Instagram', href: 'https://www.instagram.com/treverstreats/', icon: 'instagram-logo' },
+	{ label: 'YouTube', href: 'https://www.youtube.com/@treverstreats', icon: 'youtube-logo' },
+	{ label: 'TikTok', href: 'https://www.tiktok.com/@treverstreats', icon: 'tiktok-logo' },
+	{ label: 'Patreon', href: 'https://www.patreon.com/treverstreats', icon: 'patreon-logo' },
+	{ label: 'Throne', href: 'https://throne.com/treverstreats', icon: 'throne-logo' },
 ];
 ---
 
 <nav id="main-nav">
 	<div class="menu-header">
 		<a href="/" class="site-title">
-			<Icon icon="terminal-window" color="var(--accent-regular)" size="1.2em" gradient />
+			<img src="/assets/Trevers-Treats_Logo.png" alt="Trever's Treats Logo" style="height: 2em; width: auto; vertical-align: middle; margin-right: 0.5em;" />
 			 Trever's Treats
 		</a>
+		<form class="nav-search" role="search" aria-label="Site search" action="/search/" method="GET" style="display: flex; align-items: center; gap: 0.5em;">
+			<input type="text" name="q" placeholder="Search recipes, how-tos, gear..." aria-label="Search" style="padding: 0.4em 0.8em; border-radius: 0.5em; border: 1px solid var(--gray-400); font-size: 1em;" />
+			<button type="submit" class="button" aria-label="Search">
+				<Icon icon="list" />
+			</button>
+		</form>
 		<menu-button>
 			<template>
 				<button class="menu-button" aria-expanded="false">
@@ -110,6 +119,9 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 				</a>
 				<a href="https://patreon.com/treverstreats" class="social-link">
 					<Icon icon="patreon-logo" size="1.2em" /> Patreon
+				</a>
+				<a href="https://throne.com/treverstreats" class="social-link">
+					<Icon icon="throne-logo" size="1.2em" /> Throne
 				</a>
 			</div>
 
@@ -335,6 +347,19 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		display: flex;
 		align-items: center;
 		height: calc(var(--icon-size) + 2 * var(--icon-padding));
+	}
+
+	.nav-search input[type="text"] {
+		border: 1px solid var(--gray-400);
+		padding: 0.4em 0.8em;
+		border-radius: 0.5em;
+		font-size: 1em;
+		background: var(--gray-999);
+		color: var(--gray-0);
+	}
+
+	.nav-search button {
+		margin-left: 0.2em;
 	}
 
 	@media (min-width: 50em) {

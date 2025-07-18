@@ -1,8 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import Pill from './Pill.astro';
 
 interface Props {
-	recipe: CollectionEntry<'recipes'>;
+	recipe: CollectionEntry<'recipes'> & {
+		data: CollectionEntry<'recipes'>['data'] & {
+			nutrition?: Record<string, string | number>;
+		};
+	};
 }
 
 const { data, slug } = Astro.props.recipe;
@@ -10,11 +15,28 @@ const { data, slug } = Astro.props.recipe;
 
 <a class="card" href={`/recipes/${slug}`}>
 	<span class="title">{data.title}</span>
+	{data.tags && (
+		<div class="tags">
+			{data.tags.map(tag => <Pill>{tag}</Pill>)}
+		</div>
+	)}
 	<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
 	<div class="recipe-info">
 		{data.cookingTime && <span class="time">{data.cookingTime}</span>}
 		{data.difficulty && <span class="difficulty">{data.difficulty}</span>}
 		{data.servings && <span class="servings">{data.servings} servings</span>}
+	</div>
+	{data.nutrition && (
+		<div class="nutrition">
+			<span>Nutrition:</span>
+			<ul>
+				{Object.entries(data.nutrition).map(([k, v]) => <li>{k}: {v}</li>)}
+			</ul>
+		</div>
+	)}
+	<div class="card-actions">
+		<button class="button print-btn" title="Print this recipe" onclick="window.print(); event.stopPropagation();">🖨️ Print</button>
+		<span class="ratings" aria-label="Recipe rating">★★★★★</span>
 	</div>
 </a>
 
@@ -75,6 +97,35 @@ const { data, slug } = Astro.props.recipe;
 		color: var(--accent-text-over);
 		border-radius: 0.25rem;
 		font-weight: 500;
+	}
+
+	.tags {
+		display: flex;
+		gap: 0.25rem;
+		margin: 0.5rem 0 0.25rem 0;
+	}
+	.nutrition {
+		font-size: var(--text-sm);
+		margin: 0.25rem 0;
+		color: var(--gray-400);
+	}
+	.nutrition ul {
+		margin: 0;
+		padding-left: 1em;
+	}
+	.card-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		margin-top: 0.5em;
+	}
+	.print-btn {
+		font-size: 0.95em;
+		padding: 0.3em 0.8em;
+	}
+	.ratings {
+		color: gold;
+		font-size: 1.1em;
 	}
 
 	@media (min-width: 50em) {

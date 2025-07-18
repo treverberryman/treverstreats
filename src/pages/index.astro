@@ -42,28 +42,27 @@ const gear = (await getCollection('gear'))
 	<div class="stack gap-20 lg:gap-48">
 		<div class="wrapper stack gap-4 lg:gap-8">
 			<header class="hero">
-				<Hero
-					title="Welcome to Trever's Treats 👨‍🍳"
-					tagline="Delicious recipes, cooking tips, and kitchen gear reviews for home cooks of all skill levels."
-					align="start"
-				>
-				<div class="roles">
-					<a href="/recipes/" style={{ textDecoration: 'none' }}>
-						<Pill>
-							<Icon icon="heart" size="1.33em" /> Recipes
-						</Pill>
-					</a>
-					<a href="/how-tos/" style={{ textDecoration: 'none' }}>
-						<Pill>
-							<Icon icon="pencil-line" size="1.33em" /> How-Tos
-						</Pill>
-					</a>
-					<a href="/gear/" style={{ textDecoration: 'none' }}>
-						<Pill>
-							<Icon icon="trophy" size="1.33em" /> Gear
-						</Pill>
-					</a>
-				</div>
+				<Hero tagline="Delicious recipes, cooking tips, and kitchen gear reviews for home cooks of all skill levels." align="start">
+					<span slot="title">
+						<img class="hero-logo" src="/assets/Trevers-Treats_Logo.png" alt="Trever's Treats Logo" style="height: 1.2em; width: auto; margin-right: 0.3em; display: inline; vertical-align: middle; border-radius: 0; box-shadow: none; background: none;" />Welcome to Trever's Treats
+					</span>
+					<div class="roles">
+						<a href="/recipes/" style={{ textDecoration: 'none' }}>
+							<Pill>
+								<Icon icon="heart" size="1.33em" /> Recipes
+							</Pill>
+						</a>
+						<a href="/how-tos/" style={{ textDecoration: 'none' }}>
+							<Pill>
+								<Icon icon="pencil-line" size="1.33em" /> How-Tos
+							</Pill>
+						</a>
+						<a href="/gear/" style={{ textDecoration: 'none' }}>
+							<Pill>
+								<Icon icon="trophy" size="1.33em" /> Gear
+							</Pill>
+						</a>
+					</div>
 				</Hero>
 
 				<img
@@ -170,7 +169,7 @@ const gear = (await getCollection('gear'))
 		display: none;
 	}
 
-	.hero img {
+	.hero img:not(.hero-logo) {
 		aspect-ratio: 5 / 4;
 		object-fit: cover;
 		object-position: center;
@@ -192,7 +191,7 @@ const gear = (await getCollection('gear'))
 			gap: 0.5rem;
 		}
 
-		.hero img {
+		.hero img:not(.hero-logo) {
 			aspect-ratio: 3 / 4;
 			border-radius: 4.5rem;
 			object-fit: cover;

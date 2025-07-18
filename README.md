@@ -100,3 +100,16 @@ Contributions, suggestions, and feedback are welcome! Please open an issue or su
 - Built with the help of the **Cursor AI editor** for code, design, and workflow guidance.
 - Based on a template from [Astro's freely available templates](https://astro.build/themes/).
 - **Trever's Treats** — Created with ❤️ by Trever Berryman
+
+## Frameworks & Web Tools Used
+
+- [Astro](https://astro.build/) — Modern static site builder
+- [Astro MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) — Markdown + JSX content
+- [Astro Partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/) — Offload third-party scripts
+- [@astro-community/astro-embed-youtube](https://github.com/withastro/astro-embed-youtube) — Embed YouTube videos
+- [TypeScript](https://www.typescriptlang.org/) — Type-safe JavaScript
+- [CSS Modules & Global CSS](https://astro.build/blog/astro-v1-launch/#css-modules) — Styling
+- [Node.js](https://nodejs.org/) — Runtime
+- [npm](https://www.npmjs.com/) — Package management
+
+---

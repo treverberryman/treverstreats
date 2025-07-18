@@ -65,9 +65,18 @@
 	--text-5xl: 4.5rem;
 
 	/* Fonts */
+	/* CSS */
+	@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 	--font-system: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace
-	--font-body: 'Public Sans', var(--font-system);
-	--font-brand: Rubik, var(--font-system);
+	--font-body: 'Fira Code', var(--font-system);
+	--font-brand: 'Fira Code', var(--font-system);
+
+	/* Specify in CSS */
+	code { font-family: 'Fira Code', monospace; }
+
+	@supports (font-variation-settings: normal) {
+  		code { font-family: 'Fira Code VF', monospace; }
+	}
 
 	/* Transitions */
 	--theme-transition: 0.2s ease-in-out;
@@ -120,6 +129,7 @@ html,
 body {
 	height: 100%;
 	overflow-x: hidden;
+	font-family: 'Fira Code', 'Fira Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 }
 
 body {

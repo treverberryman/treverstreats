@@ -1,4 +1,4 @@
-# Trever's Treats 🍳
+# Trever's Treats
 
 A modern cooking website built with [Astro](https://astro.build/), featuring recipes, how-tos, gear reviews, and a personal blog. Designed for food lovers, home cooks, and anyone interested in creative technology in the kitchen.
 
